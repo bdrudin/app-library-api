@@ -8,6 +8,6 @@ Happy Coding!
 
 #### Follow me on Social media
 
-[Twitter](https://twitter.com/demonkit3)  
-[Instagram](https://www.instagram.com/b.y.dru/)  
-[Github](https://www.github.com/bdrudin/)
+> [Twitter](https://twitter.com/demonkit3)  
+> [Instagram](https://www.instagram.com/b.y.dru/)  
+> [Github](https://www.github.com/bdrudin/)
