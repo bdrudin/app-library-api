@@ -9,7 +9,7 @@ Happy Coding!
 ## Pekan 1
 
 - H1 CLI & Git  
-  [Tugas](https://gitlab.com/badrudin.dev/bds-sanbercode-nodejs-batch-40/-/tree/main/H1-tugas-git)
+  [Tugas](https://gitlab.com/badrudin.dev/bds-sanbercode-nodejs-batch-40/-/tree/main/Tugas1)
 - H2 Intro NodeJS & JavaScript Basic
 - H3 Functions & looping
 - H4 Array
