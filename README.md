@@ -6,6 +6,39 @@ Repository ini dibuat untuk menyimpan semua tugas maupun kegiatan bootcamp nodej
 
 Happy Coding!
 
+## Pekan 1
+
+- H1 CLI & Git  
+  [Tugas](https://gitlab.com/badrudin.dev/bds-sanbercode-nodejs-batch-40/-/tree/main/H1-tugas-git)
+- H2 Intro NodeJS & JavaScript Basic
+- H3 Functions & looping
+- H4 Array
+- H5 Object Literal
+
+## Pekan 2
+
+- H6 JS Modern, ES6
+- H7 OOP
+- H8 Async
+- H9 SQL DB
+- H10 ERD DB
+
+## Pekan 3
+
+- H11 Rest full API with Express
+- H12 MVC With Sequelize
+- H13 Typescript & Intro Adonis
+- H14 Adonis Migration
+- H15 CRUD with lucid query builder
+
+## Pekan 4
+
+- H16 CRUD with lucid query ORM
+- H17 Adonis Auth & Lucid Relasi
+- H18 Adonis mail & middleware
+- H19 Deploy Adonis App to Heroku
+- H20 Final Project
+
 #### Follow me on Social media
 
 > [Twitter](https://twitter.com/demonkit3)  
