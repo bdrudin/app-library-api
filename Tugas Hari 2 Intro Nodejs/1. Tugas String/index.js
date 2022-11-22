@@ -88,11 +88,11 @@ let firstWordLength = firstWord3.length;
 secondWordLength = secondWord3.length;
 thirdWordLength = thirdWord3.length;
 fourthWordLength = fourthWord3.length;
-fifthWordLength = firstWord3.length;
+fifthWordLength = fifthWord3.length;
 
 console.log(`First Word: ${firstWord3}, with length: ${firstWordLength}`);
 console.log(`Second Word: ${secondWord3}, with length: ${secondWordLength}`);
 console.log(`Third Word: ${thirdWord3}, with length: ${thirdWordLength}`);
-console.log(`Fourth Word: ${fourthWord3}, with length: ${fifthWordLength}`);
+console.log(`Fourth Word: ${fourthWord3}, with length: ${fourthWordLength}`);
 console.log(`Fifth Word: ${fifthWord3}, with length: ${fifthWordLength}`);
 console.log(`\n Sentence length: ${sentence3.length}`);
