@@ -1,4 +1,5 @@
 // Soal No. 1 (Membuat kalimat)
+
 let word = "JavaScript";
 second = "is";
 third = "awesome";
@@ -19,6 +20,7 @@ console.log(results);
 console.log("");
 
 // Soal No.2 Mengurai kalimat (Akses karakter dalam string)
+
 let sentence = "I am going to be React Native Developer";
 
 let firstword = sentence[0];
@@ -61,6 +63,7 @@ console.log(`Eighth Word: ${eighthWord}`);
 console.log("");
 
 // Soal No. 3 Mengurai Kalimat (Substring)
+
 let sentence2 = "wow JavaScript is so cool";
 
 let firstWord2 = sentence2.substring(0, 3);
@@ -76,7 +79,9 @@ console.log(`Fourth Word: ${fourthWord2}`);
 console.log(`Fifth Word: ${fifthWord2}`);
 
 console.log("");
+
 // Soal No. 4 Mengurai Kalimat dan Menentukan Panjang String
+
 let sentence3 = "wow JavaScript is so cool";
 
 let firstWord3 = sentence3.substring(0, 3);
@@ -96,4 +101,3 @@ console.log(`Second Word: ${secondWord3}, with length: ${secondWordLength}`);
 console.log(`Third Word: ${thirdWord3}, with length: ${thirdWordLength}`);
 console.log(`Fourth Word: ${fourthWord3}, with length: ${fourthWordLength}`);
 console.log(`Fifth Word: ${fifthWord3}, with length: ${fifthWordLength}`);
-console.log(`\n Sentence3 length: ${sentence3.length}`);

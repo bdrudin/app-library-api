@@ -26,6 +26,7 @@ if (nama === "") {
 }
 
 console.log("");
+
 // Switch case
 
 let hari = 21;
