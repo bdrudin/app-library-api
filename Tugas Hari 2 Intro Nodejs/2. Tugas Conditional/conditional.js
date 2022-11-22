@@ -30,7 +30,7 @@ console.log("");
 // Switch case
 
 let hari = 21;
-bulan = 1;
+bulan = 1; // input bulan 1-12
 tahun = 1945;
 
 switch (bulan) {
