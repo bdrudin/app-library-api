@@ -17,6 +17,7 @@ const results = word
 
 console.log(results);
 console.log("");
+
 // Soal No.2 Mengurai kalimat (Akses karakter dalam string)
 let sentence = "I am going to be React Native Developer";
 
@@ -95,4 +96,4 @@ console.log(`Second Word: ${secondWord3}, with length: ${secondWordLength}`);
 console.log(`Third Word: ${thirdWord3}, with length: ${thirdWordLength}`);
 console.log(`Fourth Word: ${fourthWord3}, with length: ${fourthWordLength}`);
 console.log(`Fifth Word: ${fifthWord3}, with length: ${fifthWordLength}`);
-console.log(`\n Sentence length: ${sentence3.length}`);
+console.log(`\n Sentence3 length: ${sentence3.length}`);

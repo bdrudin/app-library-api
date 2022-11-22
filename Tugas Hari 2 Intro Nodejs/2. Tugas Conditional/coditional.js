@@ -21,8 +21,8 @@ if (nama === "") {
   console.log(`Selamat datang di Dunia Werewolf, ${nama}`);
   console.log(`Halo ${peran} ${nama}, Kamu akan memakan mangsa setiap malam!`);
 } else {
-  console.log("Peran kamu tidak ada!");
-  console.log(`${peran} not found.`);
+  console.log(`Halo ${nama},Peran kamu tidak ada!`);
+  console.log(`Peran ${peran} not found.`);
 }
 
 console.log("");
