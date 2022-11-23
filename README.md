@@ -12,7 +12,8 @@ Happy Coding!
   [Tugas 1](https://gitlab.com/badrudin.dev/bds-sanbercode-nodejs-batch-40/-/tree/main/Tugas%20Hari%201%20Git)
 - H2 Intro NodeJS & JavaScript Basic  
   [Tugas 2](https://gitlab.com/badrudin.dev/bds-sanbercode-nodejs-batch-40/-/tree/main/Tugas%20Hari%202%20Intro%20Nodejs)
-- H3 Functions & looping
+- H3 Functions & looping  
+  [Tugas 3](https://gitlab.com/badrudin.dev/bds-sanbercode-nodejs-batch-40/-/tree/main/Tugas%20Hari%203%20Functions%20%26%20looping)
 - H4 Array
 - H5 Object Literal
 
