@@ -16,7 +16,8 @@ Happy Coding!
   [Tugas 3](https://gitlab.com/badrudin.dev/bds-sanbercode-nodejs-batch-40/-/tree/main/Tugas%20Hari%203%20Functions%20%26%20looping)
 - H4 Array  
   [Tugas 4](https://gitlab.com/badrudin.dev/bds-sanbercode-nodejs-batch-40/-/tree/main/Tugas%20hari%204%20Array)
-- H5 Object Literal
+- H5 Object Literal  
+  [Tugas 5](https://gitlab.com/badrudin.dev/bds-sanbercode-nodejs-batch-40/-/tree/main/Tugas%20hari%205%20Object%20literal)
 
 ## Pekan 2
 
