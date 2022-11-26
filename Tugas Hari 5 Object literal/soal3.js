@@ -10,12 +10,17 @@ function nilaiTertinggi(siswa) {
     result.push(kelas);
     result.push(data);
   }
-
   const newObj = {
-    adonis: result[1],
+    adonis: "",
     laravel: result[3],
     vuejs: result[7],
   };
+
+  if (result[1].score > result[5].score) {
+    newObj.adonis = result[1];
+  } else {
+    newObj.adonis = result[5];
+  }
   return newObj;
 }
 
