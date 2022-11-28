@@ -1,0 +1,106 @@
+Buatlah Folder baru dengan nama "Tugas 6 - ES6" di repositori tugas harian kalian.
+Buatlah satu folder di dalam folder tersebut dengan nama folder "src". Kerjakanlah tugas berikut ini pada folder src dengan 
+menggunakan Sintaks ES6 yang telah kalian pelajari.
+Folder src tersebut dilakukan compile menggunakan Babel dengan output folder "dist". (Gunakan perintah npm init untuk memulai 
+project npm, lalu install library Babel js npm install  @babel/core @babel/cli @babel/preset-env --save)
+CATATAN: WAJIB menggunakan export & import module. struktur folder tugas terdiri dari entry file index.js dan folder library 
+lib . function dibuat di file yang ada di folder lib lalu diexport dan diimport ke index.js. Perintah menjalankan soal harus 
+sesuai perintah.
+
+ 
+Soal 1 Function Sapa
+buatlah sebuah function yang menerima satu parameter berupa string nama. function tersebut me-return kalimat sapaan 
+berdasarkan parameter nama yang diberikan.
+
+Hint: gunakan arrow function, template literals
+
+Perintah :
+
+node dist sapa <nama>
+
+Contoh Perintah:
+
+node dist sapa Abduh
+
+Output
+
+"halo selamat pagi, Abduh"
+
+ 
+
+ 
+Soal 2 Konversi Object
+Buatlah sebuah function yang menerima tiga parameter yaitu nama, domisili, dan umur. function akan mengembalikan object 
+berisi data dari parameter yang diberikan.
+
+Hint: Enhanced Objects, Destructuring, arrow functions
+
+Perintah
+
+node dist convert <nama> <domisili> <umur>
+
+Contoh Perintah
+
+node dist convert Bondra Medan 25
+
+Output
+
+{ nama : "Bondra", domisili: "Medan", umur: 25 }
+
+ 
+
+ 
+Soal 3 Check Score
+Buatlah sebuah function yang menerima satu parameter berupa string. string tersebut berisi data-data yang dipisahkan dengan 
+tanda koma(,) dan titik dua (:). Function tersebut mengolah data parameter menjadi sebuah object berdasarkan data yang 
+dikirim dari parameter.
+
+Hint: Destructuring, Enhanced Objects, arrow functions
+
+Perintah
+
+node dist checkScore <string-data>
+
+Contoh Perintah
+
+node dist checkScore name:Ahmad,kelas:Adonis,score:89
+
+Output
+
+{ name: "Ahmad", kelas: "Adonis", score: 89 }
+
+ 
+
+ 
+Soal 4 Filter Data
+Buatlah sebuah function yang menerima dua paramater berupa array of object berisi data peserta bootcamp Indonesia Mengoding,
+ dan parameter string nama kelas. Function tersebut akan mengembalikan array of object berisi data peserta yang sudah 
+ terfilter menggunakan parameter nama kelas yang diberikan.
+
+Hint: Rest Operator, Enhance Object, arrow functions
+
+CATATAN: data array tidak dikirimkan lewat perintah arguments node (process.argv) melainkan data nya ditulis langsung di 
+library. Berikut ini data array nya:
+
+const data = [
+  { name: "Ahmad", kelas: "adonis"},
+  { name: "Regi", kelas: "laravel"},
+  { name: "Bondra", kelas: "adonis"},
+  { name: "Iqbal", kelas: "vuejs" },
+  { name: "Putri", kelas: "Laravel" }
+]
+
+Perintah:
+
+node dist filterData <nama-kelas>
+
+Contoh Perintah:
+
+node dist filterData adonis
+
+Output:
+
+[
+  { name: "Ahmad", kelas: "adonis"} ,
+  { name: "Bondra", kelas: "adonis"}
+]

@@ -21,7 +21,8 @@ Happy Coding!
 
 ## Pekan 2
 
-- H6 JS Modern, ES6
+- H6 JS Modern, ES6  
+  [Tugas 6](https://gitlab.com/badrudin.dev/bds-sanbercode-nodejs-batch-40/-/tree/main/Tugas%20Hari%206%20ES6)
 - H7 OOP
 - H8 Async
 - H9 SQL DB
