@@ -1,0 +1,100 @@
+1. Menambahkan Folder Baru dan file baru
+Buat folder baru dengan nama “Tugas 7 - Berlatih Class”
+
+ 
+
+2. Kerjakan Soal di bawah ini
+kerjakan soal di bawah ini di dalam folder “Tugas 7 - Berlatih Class”
+
+ 
+
+Kita akan membuat program untuk mensimulasikan sebuah Bootcamp. Di dalam sebuah Bootcamp terdapat banyak pilihan Kelas yang 
+dapat diikuti oleh banyak Student.  
+
+ 
+Release 0 Siapkan class Bootcamp dan class Kelas
+Buatlah class Bootcamp di file dengan nama bootcamp.js dan class Kelas di kelas.js.
+
+Tentukanlah property dan method apa saja yang terdapat di sebuah bootcamp. 
+Misalkan properti nya _name, _classes dan methodnya: getter name dan getter classes untuk mendapatkan data nama Bootcamp 
+dan Kelas apa saja yang dimiliki. Selain itu ada method createClass() yaitu metode untuk membuat Kelas baru.
+
+Tentukanlah property dan method apa saja yang terdapat di sebuah Kelas. Misalkan properti nya name yaitu nama kelas, level 
+yaitu tingkat kesulitan kelas (beginner, intermediate, advanced), instructor yaitu nama instruktur di kelas tersebut. 
+buatlah getter dan setter untuk semua property tersebut. 
+
+Hint: Kalian tentukan apakah Bootcamp dengan Kelas memiliki relasi Aggregation atau Composition lalu implementasikan pada 
+class Bootcamp.
+
+
+Contoh ketika kita membuat object Bootcamp baru dan membuat kelas Baru berdasarkan nama, level dan nama instrukturnya:
+
+const sanber = new Bootcamp("sanbercode")
+
+sanber.createClass("Laravel", "beginner", "abduh")
+
+sanber.createClass("React", "beginner", "abdul")
+
+console.log(sanber.classes)
+ 
+Output console nya akan seperti berikut 
+
+[
+  Kelas {
+    _name: 'Laravel',
+    _students: [],
+    _level: 'beginner',
+    _instructor: 'abduh'
+  },
+  Kelas {
+    _name: 'React',
+    _students: [],
+    _level: 'beginner',
+    _instructor: 'abdul'
+  }
+]
+ 
+Release 1 Register Student
+Suatu Bootcamp dapat membuka pendaftaran bagi setiap Student yang ingin mendaftar ke Kelas tertentu. Buatlah class Student 
+di satu file dengan nama student.js. Tentukanlah property dan method yang ada pada object student. 
+
+Property : 
+
+_name : nama student
+Hint: Kalian tentukan apakah di antara Bootcamp, Kelas dengan Student memiliki relasi Aggregation atau Composition lalu 
+implementasikan pada program kalian.
+
+ Pada release ini daftarkanlah nama-nama student berikut ke dalam list array student pada masing-masing kelas "Laravel" dan 
+ "React" di Bootcamp. Cara menentukan kelas untuk masing-masing student adalah berdasarkan index array genap dan ganjil. 
+ Jika genap maka masuk ke kelas Laravel, jika ganjil maka masuk kelas React. 
+
+let names = ["regi", "ahmad", "bondra", "iqbal", "putri", "rezky"]
+names.map((nama, index) => {
+  let newStud = new Student(nama)
+  let kelas = sanber.classes[index % 2].name
+  sanber.register(kelas, newStud)
+})
+// menampilkan data kelas dan student nya
+sanber.classes.forEach(kelas => {
+  console.log(kelas)
+});
+Maka output console nya akan seperti berikut: 
+Kelas {
+  _name: 'Laravel',
+  _students: [
+    Student { _name: 'regi },
+    Student { _name: 'bondra'},
+    Student { _name: 'putri' }
+  ],
+  _level: 'beginner',
+  _instructor: 'abduh'
+}
+Kelas {
+  _name: 'React',
+  _students: [
+    Student { _name: 'ahmad' },
+    Student { _name: 'iqbal' },
+    Student { _name: 'rezky' }
+  ],
+  _level: 'beginner',
+  _instructor: 'abdul'
