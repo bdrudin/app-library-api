@@ -1,7 +1,7 @@
-const sapa = require("./libs/sapa");
-const convert = require("./libs/convert");
-const { filterData, data } = require("./libs/filterData");
-const checkScore = require("./libs/checkScore");
+import sapa from "./libs/sapa";
+import convert from "./libs/convert";
+import { filterData, data } from "./libs/filterData";
+import checkScore from "./libs/checkScore";
 
 const command = process.argv[2];
 const myArgs = process.argv[3];

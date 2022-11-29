@@ -4,4 +4,4 @@ const convert = (nama, domisili, umur) => {
   return results;
 };
 
-module.exports = convert;
+export default convert;

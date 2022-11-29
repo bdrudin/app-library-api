@@ -1,5 +1,9 @@
 "use strict";
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
 var convert = function convert(nama, domisili, umur) {
   var results = {
     nama: nama,
@@ -8,4 +12,5 @@ var convert = function convert(nama, domisili, umur) {
   };
   return results;
 };
-module.exports = convert;
+var _default = convert;
+exports["default"] = _default;

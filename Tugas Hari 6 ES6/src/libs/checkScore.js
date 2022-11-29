@@ -18,4 +18,4 @@ const checkScore = (str) => {
   return obj;
 };
 
-module.exports = checkScore;
+export default checkScore;

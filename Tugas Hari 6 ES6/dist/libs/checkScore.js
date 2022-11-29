@@ -1,5 +1,9 @@
 "use strict";
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
 var checkScore = function checkScore(str) {
   var results = str.split(" ");
   var data = [];
@@ -17,4 +21,5 @@ var checkScore = function checkScore(str) {
   };
   return obj;
 };
-module.exports = checkScore;
+var _default = checkScore;
+exports["default"] = _default;
