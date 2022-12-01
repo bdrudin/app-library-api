@@ -1,0 +1,55 @@
+1. Membuat Database
+
+CREATE DATABASE library;
+
+2. Membuat Table di Dalam Database
+
+CREATE TABLE users (
+    id int AUTO_INCREMENT,
+    name varchar(255),
+    email varchar(255),
+    password varchar(255),
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE categories (
+    id int AUTO_INCREMENT,
+    name varchar(255),
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE books (
+    id int AUTO_INCREMENT,
+    title varchar(255),
+    summary text,
+    stock int,
+    categoryID int,
+    PRIMARY KEY (id),
+    FOREIGN KEY (categoryID) REFERENCES categories(id)
+);
+
+3. Memasukkan Data pada Table
+
+INSERT INTO users (name, email, password) VALUES ("John Doe",	"john@doe.com",	"john123"),("Jane Doe", "jane@doe.com", "jenita123");
+INSERT INTO categories (name) VALUES ("Novel"), ("Manga"), ("Comic"), ("History"), ("IT");
+INSERT INTO books (title, summary, stock, categoryID) VALUES ("One Piece", "The series focuses on Monkey D Luffy, a young man made of rubber", 50, 2),("Laskar Pelangi", "Belitung is known for its richness in tin, making it one of Indonesia's richest islands", 25, 1),("Your Name", "Mitsuha Miyamizu, a high school girl living in the fictional town of Itomori in Gifu Prefecture's", 15, 2);
+
+4. Mengambil Data dari Database
+
+-- a. Mengambil data users
+SELECT name, email FROM users;
+
+-- b. Mengambil data Books
+SELECT * FROM books WHERE stock > 20 ;
+
+SELECT * FROM books WHERE title LIKE 'one%';
+SELECT * FROM books WHERE title LIKE '%pela%';
+SELECT * FROM books WHERE title LIKE '%ame';
+
+-- c. Menampilkan data items books dengan categories
+
+SELECT books.title, books.summary, books.categoryID, categories.name FROM books INNER JOIN categories ON books.categoryID=categories.id;
+
+5. Mengubah Data dari Database
+
+UPDATE books SET stock = 30 WHERE title='One Piece';
