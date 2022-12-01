@@ -27,6 +27,8 @@ Happy Coding!
   [Tugas 7](https://gitlab.com/badrudin.dev/bds-sanbercode-nodejs-batch-40/-/tree/main/Tugas%20Hari%206%20Class)
 - H8 Async  
   [Tugas 8](https://gitlab.com/badrudin.dev/bds-sanbercode-nodejs-batch-40/-/tree/main/Tugas%20Hari%206%20Asynchronous)
+- H9 SQL DB  
+  [Tugas 9](https://gitlab.com/badrudin.dev/bds-sanbercode-nodejs-batch-40/-/tree/main/Tugas%20Hari%206%20SQL)
 - H9 SQL DB
 - H10 ERD DB
 

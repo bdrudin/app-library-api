@@ -78,7 +78,7 @@ class Bootcamp {
   }
 
   // add siswa method
-  static addSiswa(input) {
+  static async addSiswa(input) {
     let [studentName, trainerName] = input.split(",");
 
     try {
@@ -112,7 +112,8 @@ class Bootcamp {
             isTrainer._students.push(student);
             console.log("Berhasil add siswa");
           }
-          return fsPromises.writeFile(path, JSON.stringify(user));
+          // return fsPromises.writeFile(path, JSON.stringify(user));
+          console.log(isTrainer);
         }
       });
     } catch (error) {
