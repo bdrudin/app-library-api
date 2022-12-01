@@ -42,17 +42,19 @@ var Bootcamp = /*#__PURE__*/function () {
           console.log(err);
         }
         var existingData = JSON.parse(data);
+        var employee = new _employee["default"](username, passwd, role);
+
+        // user validation
         var userValidation = existingData.find(function (_ref) {
           var _name = _ref._name;
           return _name === username;
         });
-        var employee = new _employee["default"](username, passwd, role);
-
-        // create user validation
         if (!userValidation) {
           if (employee._role === "trainer") {
             employee._students = [];
           }
+
+          // save to data.json
           existingData.push(employee);
           _fs["default"].writeFile(path, JSON.stringify(existingData), function (err) {
             if (err) {
@@ -69,9 +71,7 @@ var Bootcamp = /*#__PURE__*/function () {
     // login method
   }, {
     key: "login",
-    value:
-    // login method
-    function login(input) {
+    value: function login(input) {
       var _input$split3 = input.split(","),
         _input$split4 = _slicedToArray(_input$split3, 2),
         username = _input$split4[0],
@@ -79,14 +79,23 @@ var Bootcamp = /*#__PURE__*/function () {
       try {
         _promises["default"].readFile(path).then(function (data) {
           var employees = JSON.parse(data);
+
+          // login validation
           var findUser = employees.find(function (_ref2) {
             var _name = _ref2._name;
             return _name === username;
+          });
+          var isLogin = employees.find(function (_ref3) {
+            var _name = _ref3._name,
+              _isLogin = _ref3._isLogin;
+            return _name === username && _isLogin === true;
           });
           if (!findUser) {
             console.log("Data tidak ditemukan");
           } else if (findUser._password !== passwd) {
             console.log("Password yang dimasukan salah");
+          } else if (isLogin) {
+            console.log("Anda sudah melakukan login");
           } else {
             findUser._isLogin = true;
             console.log("Berhasil Login");
@@ -97,11 +106,11 @@ var Bootcamp = /*#__PURE__*/function () {
         console.log(err);
       }
     }
+
+    // add siswa method
   }, {
     key: "addSiswa",
-    value:
-    // add siswa method
-    function addSiswa(input) {
+    value: function addSiswa(input) {
       var _input$split5 = input.split(","),
         _input$split6 = _slicedToArray(_input$split5, 2),
         studentName = _input$split6[0],
@@ -109,18 +118,30 @@ var Bootcamp = /*#__PURE__*/function () {
       try {
         _promises["default"].readFile(path).then(function (data) {
           var user = JSON.parse(data);
-          var isAdmin = user.find(function (_ref3) {
-            var _isLogin = _ref3._isLogin,
-              _role = _ref3._role;
-            return _isLogin === true && _role === "admin";
+
+          // login validation
+          var isLogin = user.find(function (_ref4) {
+            var _isLogin = _ref4._isLogin;
+            return _isLogin === true;
           });
-          var isTrainer = user.find(function (_ref4) {
-            var _role = _ref4._role,
-              _name = _ref4._name;
+
+          // admin validation
+          var isAdmin = user.find(function (_ref5) {
+            var _role = _ref5._role,
+              _isLogin = _ref5._isLogin;
+            return _role === "admin" && _isLogin === true;
+          });
+
+          // trainer validation
+          var isTrainer = user.find(function (_ref6) {
+            var _role = _ref6._role,
+              _name = _ref6._name;
             return _role === "trainer" && _name === trainerName;
           });
-          if (!isAdmin) {
-            console.log("Silahkan login admin!");
+          if (!isLogin) {
+            console.log("Silahkan melakukan login");
+          } else if (!isAdmin) {
+            console.log("Anda bukan lah admin");
           } else {
             var student = {
               name: studentName
@@ -136,6 +157,45 @@ var Bootcamp = /*#__PURE__*/function () {
         });
       } catch (error) {
         console.log(error);
+      }
+    }
+
+    // logout method
+  }, {
+    key: "logout",
+    value: function logout(input) {
+      var _input$split7 = input.split(","),
+        _input$split8 = _slicedToArray(_input$split7, 2),
+        username = _input$split8[0],
+        passwd = _input$split8[1];
+      try {
+        _promises["default"].readFile(path).then(function (data) {
+          var employees = JSON.parse(data);
+
+          // login validation
+          var findUser = employees.find(function (_ref7) {
+            var _name = _ref7._name;
+            return _name === username;
+          });
+          var isLogin = employees.find(function (_ref8) {
+            var _name = _ref8._name,
+              _isLogin = _ref8._isLogin;
+            return _name === username && _isLogin === true;
+          });
+          if (!findUser) {
+            console.log("Data tidak ditemukan");
+          } else if (findUser._password !== passwd) {
+            console.log("Password yang dimasukan salah");
+          } else if (!isLogin) {
+            console.log("Anda belum melakukan login");
+          } else {
+            findUser._isLogin = false;
+            console.log("Berhasil logout");
+            return _promises["default"].writeFile(path, JSON.stringify(employees));
+          }
+        });
+      } catch (err) {
+        console.log(err);
       }
     }
   }]);

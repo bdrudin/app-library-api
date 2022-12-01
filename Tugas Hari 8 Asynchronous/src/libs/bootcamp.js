@@ -17,18 +17,19 @@ class Bootcamp {
 
       let existingData = JSON.parse(data);
 
+      let employee = new Employee(username, passwd, role);
+
+      // user validation
       const userValidation = existingData.find(
         ({ _name }) => _name === username
       );
 
-      let employee = new Employee(username, passwd, role);
-
-      // create user validation
       if (!userValidation) {
         if (employee._role === "trainer") {
           employee._students = [];
         }
 
+        // save to data.json
         existingData.push(employee);
 
         fs.writeFile(path, JSON.stringify(existingData), (err) => {
@@ -51,12 +52,18 @@ class Bootcamp {
       fsPromises.readFile(path).then((data) => {
         let employees = JSON.parse(data);
 
+        // login validation
         const findUser = employees.find(({ _name }) => _name === username);
+        const isLogin = employees.find(
+          ({ _name, _isLogin }) => _name === username && _isLogin === true
+        );
 
         if (!findUser) {
           console.log("Data tidak ditemukan");
         } else if (findUser._password !== passwd) {
           console.log("Password yang dimasukan salah");
+        } else if (isLogin) {
+          console.log("Anda sudah melakukan login");
         } else {
           findUser._isLogin = true;
 
@@ -78,16 +85,23 @@ class Bootcamp {
       fsPromises.readFile(path).then((data) => {
         const user = JSON.parse(data);
 
+        // login validation
+        const isLogin = user.find(({ _isLogin }) => _isLogin === true);
+
+        // admin validation
         const isAdmin = user.find(
-          ({ _isLogin, _role }) => _isLogin === true && _role === "admin"
+          ({ _role, _isLogin }) => _role === "admin" && _isLogin === true
         );
 
+        // trainer validation
         const isTrainer = user.find(
           ({ _role, _name }) => _role === "trainer" && _name === trainerName
         );
 
-        if (!isAdmin) {
-          console.log("Silahkan login admin!");
+        if (!isLogin) {
+          console.log("Silahkan melakukan login");
+        } else if (!isAdmin) {
+          console.log("Anda bukan lah admin");
         } else {
           const student = {
             name: studentName,
@@ -106,24 +120,30 @@ class Bootcamp {
     }
   }
 
-  // login method
-  static login(input) {
+  // logout method
+  static logout(input) {
     let [username, passwd] = input.split(",");
 
     try {
       fsPromises.readFile(path).then((data) => {
         let employees = JSON.parse(data);
 
+        // login validation
         const findUser = employees.find(({ _name }) => _name === username);
+        const isLogin = employees.find(
+          ({ _name, _isLogin }) => _name === username && _isLogin === true
+        );
 
         if (!findUser) {
           console.log("Data tidak ditemukan");
         } else if (findUser._password !== passwd) {
           console.log("Password yang dimasukan salah");
+        } else if (!isLogin) {
+          console.log("Anda belum melakukan login");
         } else {
-          findUser._isLogin = true;
+          findUser._isLogin = false;
 
-          console.log("Berhasil Login");
+          console.log("Berhasil logout");
 
           return fsPromises.writeFile(path, JSON.stringify(employees));
         }

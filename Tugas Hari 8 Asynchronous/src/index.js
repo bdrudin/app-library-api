@@ -14,6 +14,9 @@ switch (command) {
   case "addSiswa":
     Bootcamp.addSiswa(input);
     break;
+  case "logout":
+    Bootcamp.logout(input);
+    break;
   default:
     console.log(
       "command not found! \ntry again:\n--register\n--login\n--addSiswa"
