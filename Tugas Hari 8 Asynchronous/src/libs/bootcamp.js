@@ -112,8 +112,7 @@ class Bootcamp {
             isTrainer._students.push(student);
             console.log("Berhasil add siswa");
           }
-          // return fsPromises.writeFile(path, JSON.stringify(user));
-          console.log(isTrainer);
+          return fsPromises.writeFile(path, JSON.stringify(user));
         }
       });
     } catch (error) {
