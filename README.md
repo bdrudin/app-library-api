@@ -30,11 +30,12 @@ Happy Coding!
 - H9 SQL DB  
   [Tugas 9](https://gitlab.com/badrudin.dev/bds-sanbercode-nodejs-batch-40/-/tree/main/Tugas%20Hari%206%20SQL)
 - H10 ERD DB  
-  [Tugas 10](https://gitlab.com/badrudin.dev/bds-sanbercode-nodejs-batch-40/-/tree/main/Tugas%20Hari%206%20ERD)
+  [Tugas 10](https://gitlab.com/badrudin.dev/bds-sanbercode-nodejs-batch-40/-/tree/main/Tugas-Hari-10-ERD)
 
 ## Pekan 3
 
-- H11 Rest full API with Express
+- H11 Rest full API with Express  
+  [Tugas 11](https://gitlab.com/badrudin.dev/bds-sanbercode-nodejs-batch-40/-/tree/main/Tugas-Hari-11-RestAPI-Express)
 - H12 MVC With Sequelize
 - H13 Typescript & Intro Adonis
 - H14 Adonis Migration
