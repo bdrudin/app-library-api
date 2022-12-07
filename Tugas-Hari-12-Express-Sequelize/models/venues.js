@@ -13,9 +13,25 @@ module.exports = (sequelize, DataTypes) => {
   }
   Venues.init(
     {
-      name: DataTypes.STRING,
+      name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notNull: {
+            msg: "Name tidak boleh kosong",
+          },
+        },
+      },
       address: DataTypes.STRING,
-      phone: DataTypes.STRING,
+      phone: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notNull: {
+            msg: "Phone tidak boleh kosong",
+          },
+        },
+      },
     },
     {
       sequelize,

@@ -1,4 +1,4 @@
-const { Venues } = require("../models");
+const { Venues } = require("../models/venues");
 
 class VenueController {
   static async store(req, res) {
@@ -9,9 +9,9 @@ class VenueController {
 
       // Create a new user
       const newUser = await Venues.create({
-        name: name,
-        address: address,
-        phone: phone,
+        name,
+        address,
+        phone,
       });
 
       res.status(201).json({
@@ -26,6 +26,9 @@ class VenueController {
       });
     }
   }
+
+  static async getDataAll(req, res) {}
+  static async getDataById(req, res) {}
 }
 
 module.exports = VenueController;
