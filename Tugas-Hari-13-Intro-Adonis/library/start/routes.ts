@@ -17,8 +17,8 @@
 | import './routes/customer'
 |
 */
-// import KategorisController from 'App/Controllers/Http/KategorisController'
 import Route from '@ioc:Adonis/Core/Route'
 
-Route.post('/categories',"CategoriesController.store")
-Route.post('/books',"BooksController.store")
+// Route.post('/categories',"CategoriesController.store")
+// Route.post('/books',"BooksController.store")
+Route.resource("/categories", "CategoriesController").apiOnly()
