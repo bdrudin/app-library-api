@@ -1,4 +1,4 @@
-const { Venues } = require("../models/venues");
+const { Venues } = require("../models");
 
 class VenueController {
   static async store(req, res) {
@@ -9,9 +9,9 @@ class VenueController {
 
       // Create a new user
       const newUser = await Venues.create({
-        name,
-        address,
-        phone,
+        name: name,
+        address: address,
+        phone: phone,
       });
 
       res.status(201).json({
@@ -23,7 +23,9 @@ class VenueController {
       res.status(401).json({
         status: "failed",
         message: "Data Venues gagal ditambahkan",
+        msg: error,
       });
+      console.log(error);
     }
   }
 
