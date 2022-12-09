@@ -19,6 +19,5 @@
 */
 import Route from '@ioc:Adonis/Core/Route'
 
-// Route.post('/categories',"CategoriesController.store")
-// Route.post('/books',"BooksController.store")
-Route.resource("/categories", "CategoriesController").apiOnly()
+Route.resource("/categories", "CategoriesController").apiOnly();
+Route.resource("/books", "BooksController").apiOnly();

@@ -1,19 +1,20 @@
 import BaseSchema from '@ioc:Adonis/Lucid/Schema'
 
 export default class extends BaseSchema {
-  protected tableName = 'categories'
+  protected tableName = 'books'
 
   public async up () {
     this.schema.createTable(this.tableName, (table) => {
-      table.increments('id').primary();
-      table.string("name");
-
+      table.increments('id')
+      table.string("title")
+      table.text("summary")
+      table.date("release_date")
+      table.integer("category_id").unsigned().references("id").inTable("categories");
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL
        */
-      table.timestamps(true, true)
-      // table.timestamp('created_at', { useTz: true })
-      // table.timestamp('updated_at', { useTz: true })
+      table.timestamp('created_at', { useTz: true })
+      table.timestamp('updated_at', { useTz: true })
     })
   }
 
