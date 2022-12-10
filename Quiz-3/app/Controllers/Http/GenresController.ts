@@ -8,7 +8,7 @@ export default class GenresController {
     const genres = await Database.from("genres").select("*");
 
     response.ok({
-      message: "Success",
+      message: "Successfully",
       data: genres
     })
 
@@ -50,7 +50,7 @@ export default class GenresController {
       .update(genre)
 
       return response.ok({
-        message: "Successfully updated id: " + genreId
+        message: "Successfully updated genre id: " + genreId
       })
   }
 
