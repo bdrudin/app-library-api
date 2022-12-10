@@ -16,11 +16,12 @@ export default class BooksController {
         const payload = await request.validate(BooksValidationValidator);
         await Database
         .table('books')
-        .insert(payload)
+        .insert({...payload, release_date: payload.release_date.toSQLDate()})
 
         return response.ok({
           message: "Successfully Added book"
         })
+        
       }
 
       public async show({response, params}: HttpContextContract) {
@@ -31,7 +32,7 @@ export default class BooksController {
           .firstOrFail()
     
         return response.ok({
-          message: "Succes",
+          message: "Success",
           data: findBook
         })
       }

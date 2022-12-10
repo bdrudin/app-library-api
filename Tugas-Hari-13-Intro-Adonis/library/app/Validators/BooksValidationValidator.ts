@@ -26,6 +26,7 @@ export default class BooksValidationValidator {
   public schema = schema.create({
     title: schema.string(),
     summary: schema.string(),
+    // release_date: schema.string(),
     release_date: schema.date({
       format: 'dd-MM-yyyy'
     }),

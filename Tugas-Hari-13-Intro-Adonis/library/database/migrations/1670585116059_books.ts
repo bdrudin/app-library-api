@@ -9,6 +9,7 @@ export default class extends BaseSchema {
       table.string("title")
       table.text("summary")
       table.date("release_date")
+      table.integer("stock")
       table.integer("category_id").unsigned().references("id").inTable("categories");
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL
