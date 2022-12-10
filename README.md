@@ -36,10 +36,14 @@ Happy Coding!
 
 - H11 Rest full API with Express  
   [Tugas 11](https://gitlab.com/badrudin.dev/bds-sanbercode-nodejs-batch-40/-/tree/main/Tugas-Hari-11-RestAPI-Express)
-- H12 MVC With Sequelize
-- H13 Typescript & Intro Adonis
-- H14 Adonis Migration
-- H15 CRUD with lucid query builder
+- H12 MVC With Sequelize  
+  [Tugas 12](https://gitlab.com/badrudin.dev/bds-sanbercode-nodejs-batch-40/-/tree/main/Tugas-Hari-12-Express-Sequelize)
+- H13 Typescript & Intro Adonis  
+  [Tugas 13](https://gitlab.com/badrudin.dev/bds-sanbercode-nodejs-batch-40/-/tree/main/Tugas-Hari-13-Intro-Adonis)
+- H14 Adonis Migration  
+  [Tugas 14](https://gitlab.com/badrudin.dev/bds-sanbercode-nodejs-batch-40/-/tree/main/Tugas-Hari-13-Intro-Adonis)
+- H15 CRUD with lucid query builder  
+  [Tugas 15](https://gitlab.com/badrudin.dev/bds-sanbercode-nodejs-batch-40/-/tree/main/Tugas-Hari-13-Intro-Adonis)
 
 ## Pekan 4
 

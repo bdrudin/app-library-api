@@ -13,7 +13,7 @@ export default class CategoriesController {
   }
 
   // public async create({}: HttpContextContract) {}
-  // tambah all kategori
+  // tambah kategori
   public async store({request, response}: HttpContextContract) {
 
     const category = await request.validate(CategoryValidator);

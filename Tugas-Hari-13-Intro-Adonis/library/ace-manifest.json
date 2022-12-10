@@ -7,7 +7,7 @@
       },
       "commandPath": "./commands/GetUserInfo",
       "commandName": "get:user_info",
-      "description": "",
+      "description": "Show user details",
       "args": [],
       "aliases": [],
       "flags": []

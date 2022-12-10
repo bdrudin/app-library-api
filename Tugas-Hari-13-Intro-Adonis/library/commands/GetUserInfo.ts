@@ -9,7 +9,7 @@ export default class GetUserInfo extends BaseCommand {
   /**
    * Command description is displayed in the "help" output
    */
-  public static description = ''
+  public static description = 'Show user details'
 
   public static settings = {
     /**
