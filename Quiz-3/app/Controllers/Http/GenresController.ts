@@ -5,14 +5,18 @@ import GenreValidator from 'App/Validators/GenreValidator';
 export default class GenresController {
   // Get all
   public async index({response}: HttpContextContract) {
-    const genres = await Database.from("genres").select("*");
+    const genres = await Database.from("genres").select("*")
 
-    response.ok({
-      message: "Successfully",
-      data: genres
-    })
+    const games = await Database
+            .from('genres')
+            .join('games', 'genres.id', '=', 'games.genres_id')
+            .select('games.id', 'games.title', "games.gameplay", "games.release_date")
+            .orderBy('genres_id')
 
-  }
+    const [{id,name}] = genres
+
+    return response.ok({id, name, games}) 
+   }
 
   // public async create({}: HttpContextContract) {}
   // Create
