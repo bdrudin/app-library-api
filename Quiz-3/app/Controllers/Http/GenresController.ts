@@ -11,11 +11,16 @@ export default class GenresController {
             .from('genres')
             .join('games', 'genres.id', '=', 'games.genres_id')
             .select('games.id', 'games.title', "games.gameplay", "games.release_date")
-            .orderBy('genres_id')
 
-    const [{id,name}] = genres
+    const genre = await Database
+    .from('games')
+    .join('genres', 'games.id', '=', 'genres.id')
+    .select("genres.id")
+    .select("genres.name")
 
-    return response.ok({id, name, games}) 
+    const [...result] = games
+
+    return response.ok({genre, games}) 
    }
 
   // public async create({}: HttpContextContract) {}
