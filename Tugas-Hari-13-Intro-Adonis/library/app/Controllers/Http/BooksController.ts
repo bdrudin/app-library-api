@@ -1,24 +1,27 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext';
 import BooksValidationValidator from 'App/Validators/BooksValidationValidator';
-import Database from '@ioc:Adonis/Lucid/Database';
+import Book from 'App/Models/Book';
 
 export default class BooksController {
     public async index({response}: HttpContextContract) {
-        const payload = await Database.from("books").select("*");
+        const books = await Book.query().preload("categorie").preload("users")
 
         return response.ok({
           message: "Success",
-          data: payload
+          books
         })
       }
       
     public async store({request, response}: HttpContextContract) {
-        const payload = await request.validate(BooksValidationValidator);
-        await Database
-        .table('books')
-        .insert({...payload, release_date: payload.release_date.toSQLDate()})
+        const books = await request.validate(BooksValidationValidator);
+        
+        await Book.create({...books , release_date: books.release_date.toSQLDate()})
 
-        return response.ok({
+        // await Database
+        // .table('books')
+        // .insert({...payload, release_date: payload.release_date.toSQLDate()})
+
+        return response.created({
           message: "Successfully Added book"
         })
         
@@ -26,25 +29,36 @@ export default class BooksController {
 
       public async show({response, params}: HttpContextContract) {
         const book_id = params.id
-        const findBook = await Database
-          .from('books')
-          .where('id', book_id)
-          .firstOrFail()
+        // const findBook = await Database
+        //   .from('books')
+        //   .where('id', book_id)
+        //   .firstOrFail()
     
-        return response.ok({
-          message: "Success",
-          data: findBook
-        })
+        // return response.ok({
+        //   message: "Success",
+        //   data: findBook
+        // })
+        try {
+          const findBook = await Book.query().where('id', book_id).preload("categorie").firstOrFail()
+      
+          return response.ok({
+            message: "Succes",
+            data: findBook
+          })
+        } catch (err) {
+          response.status(404)
+          return response.ok({
+            error: err.message
+          })
+        }
       }
 
       public async update({request,response, params}: HttpContextContract) {
         const book_id = params.id
-        const payload = await request.validate(BooksValidationValidator);
-        const updatedBook = await Database
-          .from('books')
+        const books = await request.validate(BooksValidationValidator);
+        await Book.query()
           .where('id', book_id)
-          .update(payload)
-    
+          .update({...books, release_date: books.release_date.toSQLDate()})
           return response.ok({
             message: "Successfully updated id: " + book_id
           })
@@ -53,10 +67,8 @@ export default class BooksController {
       public async destroy({response, params}: HttpContextContract) {
         const book_id = params.id
     
-        const deletedBook = await Database
-          .from('books')
-          .where('id', book_id)
-          .delete()
+        const deletedBook = await Book.findOrFail(book_id)
+        await deletedBook.delete()
     
           return response.ok({
             message: "Successfully deleted id: " + book_id

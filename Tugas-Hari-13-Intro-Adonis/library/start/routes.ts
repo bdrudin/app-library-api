@@ -19,5 +19,20 @@
 */
 import Route from '@ioc:Adonis/Core/Route'
 
-Route.resource("categories", "CategoriesController").apiOnly();
-Route.resource("books", "BooksController").apiOnly();
+
+Route.group(() => {
+    Route.resource("categories", "CategoriesController").apiOnly();
+    Route.resource("books", "BooksController").apiOnly();
+
+    Route.post("/register", "AuthController.register")
+    Route.post("/login", "AuthController.login")
+    
+    Route.get("/me", "AuthController.me").middleware('auth')
+    Route.post("/profile", "AuthController.Updateprofile").middleware('auth')
+
+    Route.post("/book/:id/borrow", "BorrowsController.store").middleware("auth")
+    Route.get("/borrow/:id", "BorrowsController.show").middleware("auth")
+    Route.get("/borrow", "BorrowsController.index").middleware("auth")
+
+
+  }).prefix('/api/v1')

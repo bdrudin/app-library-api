@@ -1,14 +1,15 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import Database from '@ioc:Adonis/Lucid/Database'
 import CategoryValidator from 'App/Validators/CategoryValidator'
+import Categorie from 'App/Models/Categorie'
+
 
 export default class CategoriesController {
   // Tampil semua kategory
   public async index({response}: HttpContextContract) {
-    const categories = await Database.from("categories").select("*");
+    const categories = await Categorie.query().preload('books')
     return response.ok({
       message: "Success",
-      data: categories
+      categories
     })
   }
 
@@ -17,11 +18,8 @@ export default class CategoriesController {
   public async store({request, response}: HttpContextContract) {
 
     const category = await request.validate(CategoryValidator);
-    await Database
-    .table('categories')
-    .insert(category)
-
-    return response.ok({
+    await Categorie.create(category)
+    return response.created({
       message: "Successfully Added Category"
     })
 
@@ -30,24 +28,28 @@ export default class CategoriesController {
   // Tampilkan detail kategori
   public async show({response, params}: HttpContextContract) {
     const categoryId = params.id
-    const findCategory = await Database
-      .from('categories')
-      .where('id', categoryId)
-      .firstOrFail()
-
-    return response.ok({
-      message: "Succes",
-      data: findCategory
-    })
+    try {
+      const findCategory = await Categorie.query().where("id", categoryId).preload("books").firstOrFail()
+  
+      return response.ok({
+        message: "Success found categories",
+        data: findCategory
+      })
+    } catch (err) {
+      response.status(404)
+      return response.ok({
+        error: err.message
+      })
+    }
   }
 
   // public async edit({}: HttpContextContract) {}
+
   // perbarui kategori by id
   public async update({request,response, params}: HttpContextContract) {
     const categoryId = params.id
     const category = await request.validate(CategoryValidator);
-    const updatedCategory = await Database
-      .from('categories')
+    await Categorie.query()
       .where('id', categoryId)
       .update(category)
 
@@ -61,11 +63,8 @@ export default class CategoriesController {
   public async destroy({response, params}: HttpContextContract) {
     const categoryId = params.id
 
-    const deletedCategory = await Database
-      .from('categories')
-      .where('id', categoryId)
-      .delete()
-
+    const deletedCategory = await Categorie.findOrFail(categoryId)
+    await deletedCategory.delete()
       return response.ok({
         message: "Successfully deleted id: " + categoryId
       })
