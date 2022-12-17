@@ -1,1 +1,0 @@
-{"users":[{"name":"Bondra","password":"12345678","role":"admin","isLogin":true},{"name":"Iqbal","password":"12345678","role":"trainer","isLogin":false,"students":[{"name":"Regy","classes":"Adonis"}]}]}
