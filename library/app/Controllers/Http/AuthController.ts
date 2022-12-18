@@ -11,8 +11,9 @@ export default class AuthController {
             const name = request.input('name')
             const email = request.input('email')
             const password = request.input('password')
+            const role = request.input('role')
 
-            const newUser = await User.create({name, email, password})
+            const newUser = await User.create({name, email, password, role})
             
             // const validate = await request.validate(AuthValidateValidator);
             await User.create(newUser);

@@ -1,15 +1,14 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
-export default class Verify {
+export default class IsAdmin {
   public async handle({auth, response}: HttpContextContract, next: () => Promise<void>) {
     // code for middleware goes here. ABOVE THE NEXT CALL
-    let isVerified = await auth.user?.isVerified
+    let user = await auth.user?.role
 
-    if(isVerified){
+    if(user === "admin"){
       await next()
     }else{
-      return response.unauthorized({message: "Please verified your account"})
+      return response.unauthorized({message: "Not allowed"})
     }
-
   }
 }
