@@ -7,6 +7,33 @@ import { schema } from '@ioc:Adonis/Core/Validator'
 
 export default class BorrowsController {
     public async store({request, response, auth, params}: HttpContextContract){
+        /**
+     * @swagger
+     * /api/v1/book/{book_id}/borrow:
+     *  post:
+     *    tags:
+     *      - borrows
+     *      - books
+     *    summary: Borrow book
+     *    requestBody:
+     *      required: true
+     *      content:
+     *        application/x-www-form-urlencoded:
+     *          schema:
+     *            type: object
+     *            properties:
+     *              loan_date:
+     *                type: date
+     *              return_date:
+     *                type: date
+     *            required:
+     *              - loan_date
+     *              - return_date
+     *    responses:
+     *      200:
+     *        description: Borrow book 
+     *        example: Successfully borrow book
+     */
         try {
             const userDataId = auth.user?.id
 
@@ -43,6 +70,18 @@ export default class BorrowsController {
     }
 
     public async index({response}: HttpContextContract){
+    /**
+     * @swagger
+     * /api/v1/borrow/:
+     *  get:
+     *    tags:
+     *      - borrows
+     *    summary: Show all borrows
+     *    responses:
+     *      200:
+     *        description: Show all borrows
+     *        example: Successfully show borrows
+     */
         try {
             const dataBorrow = await Borrow.query().preload("books").preload("users")
             
@@ -56,6 +95,26 @@ export default class BorrowsController {
     }
 
     public async show({response, params}: HttpContextContract){
+        /**
+     * @swagger
+     * /api/v1/borrow/{borrow_id}:
+     *  get:
+     *    tags:
+     *      - borrows
+     *    summary: Show details borrow
+     *    parameters:
+     *      - in: path
+     *        name: id
+     *        description: The borrow id
+     *        required: true
+     *        type: integer
+     *        minimum: 1
+     *    responses:
+     *      200:
+     *        description: Show borrow by id
+     *        example: Successfully show details borrow id
+     */
+
         try {
             const dataBorrow = await Borrow.query().where("id", params.id).preload("books").preload("users").firstOrFail()
             return response.ok({

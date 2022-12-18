@@ -7,6 +7,38 @@ import Database from '@ioc:Adonis/Lucid/Database'
 
 export default class AuthController {
     public async register({request, response}: HttpContextContract){
+    /**
+     * @swagger
+     * /api/v1/register:
+     *  post:
+     *    tags:
+     *      - users
+     *    summary: Add users
+     *    requestBody:
+     *      required: true
+     *      content:
+     *        application/x-www-form-urlencoded:
+     *          schema:
+     *            type: object
+     *            properties:
+     *              name: 
+     *                type: string
+     *              email:
+     *                type: string
+     *              password:
+     *                type: string
+     *              role:
+     *                type: string
+     *            required:
+     *              - name
+     *              - email
+     *              - password
+     *              - role
+     *    responses:
+     *      200:
+     *        description: Add Users
+     *        example: Register success
+     */
         try {
             const name = request.input('name')
             const email = request.input('email')
@@ -41,6 +73,34 @@ export default class AuthController {
     }
 
     public async otpConfirmation({request, response, auth}:HttpContextContract){
+        /**
+     * @swagger
+     * /api/v1/otp-confirmation:
+     *  post:     
+     *    security:
+     *      - bearerAuth: []
+     *    tags:
+     *      - users
+     *    summary: Verified users with OTP code
+     *    requestBody:
+     *      required: true
+     *      content:
+     *        application/x-www-form-urlencoded:
+     *          schema:
+     *            type: object
+     *            properties:
+     *              email: 
+     *                type: string
+     *              otp_code:
+     *                type: integer
+     *            required:
+     *              - email
+     *              - otp_code
+     *    responses:
+     *      200:
+     *        description: OTP Confirmation
+     *        example: Successfully verified OTP
+     */
         let otpCode = request.input("otp_code")
 
         const isUser = await auth.user
@@ -57,6 +117,32 @@ export default class AuthController {
     }
 
     public async login({request, response, auth}: HttpContextContract){
+                /**
+     * @swagger
+     * /api/v1/login:
+     *  post:
+     *    tags:
+     *      - users
+     *    summary: Login user
+     *    requestBody:
+     *      required: true
+     *      content:
+     *        application/x-www-form-urlencoded:
+     *          schema:
+     *            type: object
+     *            properties:
+     *              email: 
+     *                type: string
+     *              password:
+     *                type: string
+     *            required:
+     *              - email
+     *              - password
+     *    responses:
+     *      200:
+     *        description: Login user
+     *        example: Successfully login
+     */
         
         try {
             const loginValidation = schema.create({
@@ -103,6 +189,34 @@ export default class AuthController {
     }
 
     public async Updateprofile({auth, request, response}: HttpContextContract){
+                /**
+     * @swagger
+     * /api/v1/profile:
+     *  post:
+     *    tags:
+     *      - users
+     *    security:
+     *      - bearerAuth: []
+     *    summary: Update profile users
+     *    requestBody:
+     *      required: true
+     *      content:
+     *        application/x-www-form-urlencoded:
+     *          schema:
+     *            type: object
+     *            properties:
+     *              address: 
+     *                type: string
+     *              bio:
+     *                type: string
+     *            required:
+     *              - address
+     *              - bio
+     *    responses:
+     *      200:
+     *        description: Update profiles
+     *        example: Successfully update profile
+     */
         const userData = auth.user;
 
         const profileValidate = schema.create({
