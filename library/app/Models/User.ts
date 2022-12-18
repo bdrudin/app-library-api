@@ -9,6 +9,9 @@ export default class User extends BaseModel {
   public id: number
 
   @column()
+  public name: string
+
+  @column()
   public email: string
 
   @column({ serializeAs: null })
@@ -19,6 +22,9 @@ export default class User extends BaseModel {
 
   @column()
   public rememberMeToken: string | null
+
+  @column()
+  public isVerified: boolean
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
@@ -37,14 +43,14 @@ export default class User extends BaseModel {
   {
     foreignKey: "user_id"
   })
-  public profile: HasOne<typeof Profile>
+  public profiles: HasOne<typeof Profile>
 
   @manyToMany(() => Book, {
     localKey: 'id',
     pivotForeignKey: 'user_id',
     relatedKey: 'id',
     pivotRelatedForeignKey: 'book_id',
+    pivotTable: "borrows"
   })
-  public books: ManyToMany<typeof Book>
-  
+  public books: ManyToMany<typeof Book> 
 }

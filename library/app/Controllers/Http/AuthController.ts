@@ -1,17 +1,36 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import User from 'App/Models/User'
-import AuthValidateValidator from 'App/Validators/AuthValidateValidator'
+// import AuthValidateValidator from 'App/Validators/AuthValidateValidator'
 import { schema, rules } from '@ioc:Adonis/Core/Validator'
-
+import Mail from '@ioc:Adonis/Addons/Mail'
+import Database from '@ioc:Adonis/Lucid/Database'
 
 export default class AuthController {
     public async register({request, response}: HttpContextContract){
         try {
-            const validate = await request.validate(AuthValidateValidator);
+            const name = request.input('name')
+            const email = request.input('email')
+            const password = request.input('password')
 
-            await User.create(validate);
+            const newUser = await User.create({name, email, password})
+            
+            // const validate = await request.validate(AuthValidateValidator);
+            await User.create(newUser);
+
+            const otp_code = Math.floor(100000 + Math.random() * 900000)
+            //let saveCode = 
+            await Database.table("otp_codes").insert({otp_code: otp_code, user_id: newUser.id})
+
+            await Mail.send((message) => {
+                message
+                  .from('welcome@library.com')
+                  .to(email)
+                  .subject('Getting started with library')
+                  .htmlView('emails/otp_verification', { otp_code })
+              })
+
             return response.created({
-                message: "Register berhasil"
+                message: "Register success. Please verify otp code to activated your account"
             })
         } catch (error) {
             return response.unprocessableEntity({
@@ -20,8 +39,23 @@ export default class AuthController {
         }
     }
 
-    public async login({request, response, auth}: HttpContextContract){
+    public async otpConfirmation({request, response, auth}:HttpContextContract){
+        let otpCode = request.input("otp_code")
 
+        const isUser = await auth.user
+
+        let otpCheck = await Database.query().from("otp_codes").where("otp_code", otpCode).first()
+
+        if(isUser?.id == otpCheck?.user_id){
+            isUser.isVerified = true
+            await isUser?.save()
+            return response.status(201).json({message: "Success verified OTP"})
+        } else{
+            return response.status(400).json({message: "Failed verified OTP"})
+        }
+    }
+
+    public async login({request, response, auth}: HttpContextContract){
         
         try {
             const loginValidation = schema.create({
@@ -36,7 +70,6 @@ export default class AuthController {
             const email = request.input('email')
             const password = request.input('password')
 
-            // try {
               const token = await auth.use('api').attempt(email, password,{
                 expiresIn: '7 Days'
               })
@@ -54,7 +87,7 @@ export default class AuthController {
             } else{
                 return response.badRequest({
                     message: "Login error",
-                    error: error.message
+                    error: error.messages
                 })
             }
         }
@@ -64,7 +97,7 @@ export default class AuthController {
         const user = await auth.user
 
         return response.ok({
-            message: user
+           user
         })
     }
 
@@ -86,10 +119,10 @@ export default class AuthController {
             bio
         }
 
-        await userData?.related("profile").updateOrCreate({}, prePayload)
+        await userData?.related("profiles").updateOrCreate({}, prePayload)
 
         return response.ok({
-            message: "Success update profile"
+            message: "Success create/update profile"
         })
     }
 }

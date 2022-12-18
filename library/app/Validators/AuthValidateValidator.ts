@@ -24,6 +24,7 @@ export default class AuthValidateValidator {
    *    ```
    */
   public schema = schema.create({
+    name: schema.string(),
     email: schema.string({}, [
       rules.email(),
       rules.unique({ table: 'users', column: 'email' }),

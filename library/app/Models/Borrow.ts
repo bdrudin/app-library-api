@@ -11,11 +11,10 @@ export default class Borrow extends BaseModel {
   public user_id: number
   @column()
   public book_id: number
-
   @column()
-  public loan_date: DateTime
+  public loan_date: Date
   @column()
-  public return_date: DateTime
+  public return_date: Date
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
@@ -26,7 +25,7 @@ export default class Borrow extends BaseModel {
   @belongsTo(() => User, {
     foreignKey: "user_id"
   })
-  public user: BelongsTo<typeof User>
+  public users: BelongsTo<typeof User>
 
   @belongsTo(() => Book, {
     foreignKey: "book_id"
