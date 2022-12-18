@@ -31,8 +31,8 @@ Route.group(() => {
     Route.post("/profile", "AuthController.Updateprofile").middleware(['auth', 'verify'])
 
     // Create routes borrow
-    Route.post("/book/:id/borrow", "BorrowsController.store").middleware(['auth', 'verify', 'isAdmin'])
-    Route.get("/borrow/:id", "BorrowsController.show").middleware(['auth', 'verify'])
+    Route.post("/book/:id/borrow", "BorrowsController.store").middleware(['auth', 'verify', 'isUser'])
+    Route.get("/borrow/:id", "BorrowsController.show").middleware(['auth', 'verify', 'isAdmin'])
     Route.get("/borrow", "BorrowsController.index").middleware(['auth', 'verify', 'isAdmin'])
 
   }).prefix('/api/v1')

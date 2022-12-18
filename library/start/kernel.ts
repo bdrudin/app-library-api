@@ -44,4 +44,5 @@ Server.middleware.registerNamed({
   auth: ()=> import("App/Middleware/Auth"),
   verify: ()=> import("App/Middleware/Verify"),
   isAdmin: ()=> import("App/Middleware/IsAdmin"),
+  isUser: ()=> import("App/Middleware/IsUser"),
 })
